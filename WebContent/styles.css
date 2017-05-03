@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+form{position: relative; margin:50px auto; border-radius: 4px 4px;
+	 border: 1px solid red; display: block; width: 200px; padding: 20px;
+	 font-size: 16px}
+.inputEl{margin-bottom: 5px; width: 100%; border: 1px solid #000;
+		 height: 20px;}
+.submit{float:right; border: 1px solid gray; padding: 5px 10px; border-radius: 4px 4px;}
+.clear{clear: both}
