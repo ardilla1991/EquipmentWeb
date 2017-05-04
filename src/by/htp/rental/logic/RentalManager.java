@@ -77,12 +77,17 @@ public class RentalManager {
 			for (int i = 0; i < value.size(); i++){
 				if ( value.get(i) != null && value.get(i).getRentDate().getTime() >= from 
 						&& value.get(i).getRentDate().getTime() <= to ) {
-					System.out.println(value.get(i).getEquipment());
+					//System.out.println(value.get(i).getEquipment());
 					eq.add(value.get(i).getEquipment());
 				}
 			}
 		}
 		return eq;
 	}
+
+	public RentStation getRentStation() {
+		return rentStation;
+	}
+	
 	
 }

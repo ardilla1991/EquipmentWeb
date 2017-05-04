@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.command.CommanAction;
 import by.htp.equipment.command.CommandChooser;
+import by.htp.rental.launch.RentalRunner;
 
 /**
  * Servlet implementation class MainServlet

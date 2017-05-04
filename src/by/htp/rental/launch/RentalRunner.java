@@ -35,14 +35,16 @@ import by.htp.rental.writer.Printer;
 
 public class RentalRunner {
 	
-	public static final String XMLFilePath = "D:\\java\\JD1\\rental\\resource\\equipments.xml";
+	public static final String XMLFilePath = "D:\\java\\JD1\\EquipmentWeb\\resource\\equipments.xml";
 	
-	public void mainRunner() throws ClassNotFoundException {
+	public RentalManager mainRunner() throws ClassNotFoundException {
 		RentStation rentStation = new RentStation();
 		
 		//addEquipments(rentStation);
 		addEquipmentsFromXML(rentStation);
-		start(rentStation);
+		RentalManager rentalManager = start(rentStation);
+		
+		return rentalManager;
 	}
 	
 	private void addEquipments(RentStation rentStation) {
@@ -79,7 +81,7 @@ public class RentalRunner {
 		List<Equipment> equipments = builder.getEquipments();
 		
 		for (Equipment  eq : equipments) {
-			System.out.println(eq);
+			//System.out.println(eq);
 			rentStation.addEquipment(eq);
 		}
 	}
@@ -110,13 +112,13 @@ public class RentalRunner {
 		}
 	}
 	
-	private void start(RentStation rentStation) throws ClassNotFoundException {
+	private RentalManager start(RentStation rentStation) throws ClassNotFoundException {
 
 		Printer print = new Printer();
 		
-		print.printRes("All Equipments", rentStation);
-		print.printRes("All spare equipments:", rentStation.getSpareEquipments());
-		print.printRes("All engaged equipments:", rentStation.getEngagedEquipments());
+		//print.printRes("All Equipments", rentStation);
+		//print.printRes("All spare equipments:", rentStation.getSpareEquipments());
+		//print.printRes("All engaged equipments:", rentStation.getEngagedEquipments());
 		
 		Person person1 = new Person("Ivan", "Ivanov", "12345678");
 		
@@ -124,19 +126,19 @@ public class RentalRunner {
 		RentalManager rentalManager = new RentalManager(rentStation, orderDB);
 		
 		//  Create order for person //
-		System.out.println("Create order");
+		//System.out.println("Create order");
 		rentalManager.resetEquipments();
 		Equipment equipmentForRent = Search.findSpareEquipmentByType(rentStation, "Bycicle");
 		if ( equipmentForRent != null ) {
 			Order order1 = new Order(person1, equipmentForRent, 24);
 			boolean resRent1 = rentalManager.rent(order1);
-			String printInf = ( resRent1 ? "Equipment was added" : "Equipment wasn't added" );
-			print.printRes(printInf);
+			//String printInf = ( resRent1 ? "Equipment was added" : "Equipment wasn't added" );
+			//print.printRes(printInf);
 		}
 		
-		print.printRes("spare=", rentStation.getSpareEquipments());
-		print.printRes("engaged=", rentStation.getEngagedEquipments());
-		System.out.print(orderDB.getUnits());
+		//print.printRes("spare=", rentStation.getSpareEquipments());
+		//print.printRes("engaged=", rentStation.getEngagedEquipments());
+		//System.out.print(orderDB.getUnits());
 		
 		////////////////////////////////
 		rentalManager.resetEquipments();
@@ -144,19 +146,21 @@ public class RentalRunner {
 		if ( equipmentForRent2 != null ) {
 			Order order2 = new Order(person1, equipmentForRent2, 12);
 			boolean resRent2 = rentalManager.rent(order2);
-			String printInf = ( resRent2 ? "Equipment was added" : "Equipment wasn't added" );
-			print.printRes(printInf);
+			//String printInf = ( resRent2 ? "Equipment was added" : "Equipment wasn't added" );
+			//print.printRes(printInf);
 		}
 		
-		print.printRes("spare=", rentStation.getSpareEquipments());
-		print.printRes("engaged=", rentStation.getEngagedEquipments());
-		System.out.print(orderDB.getUnits());
+		//print.printRes("spare=", rentStation.getSpareEquipments());
+		//print.printRes("engaged=", rentStation.getEngagedEquipments());
+		//System.out.print(orderDB.getUnits());
 		
 		////   find equipment by params
-		rentalManager.resetEquipments();
-		print.printRes("There are founded equipments", Search.findEquipmentByParams(rentStation, 40));
+		//rentalManager.resetEquipments();
+		//print.printRes("There are founded equipments", Search.findEquipmentByParams(rentStation, 40));
 		
-		print.printRes("There are founded equipments by last hour");
-		rentalManager.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
+		//print.printRes("There are founded equipments by last hour");
+		//findInformation(rentalManager);
+		
+		return rentalManager;
 	}
 }
