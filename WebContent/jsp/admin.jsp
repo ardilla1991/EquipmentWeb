@@ -69,27 +69,7 @@
                 </tr>
               </thead>
               <tbody>
-                <c:forEach items="${equipments}" var="i">
-			     	<tr> 
-			     		<td> <c:out value="${i.getId()}"/> </td>
-			    		<td> <c:out value="${i.getModel()}" /> </td>
-			     		<td> <c:out value="${i.getPrice()}" /> </td>
-			     		<td> <c:out value="${i.getPersonCategory()}" /> </td>
-			     	</tr>
-		  		</c:forEach>
-              </tbody>
-            </table>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Model</th>
-                  <th>Price</th>
-                  <th>PersonCategory</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach items="${equipments}" var="i">
+                <c:forEach items="${list_eq}" var="i">
 			     	<tr> 
 			     		<td> <c:out value="${i.getId()}"/> </td>
 			    		<td> <c:out value="${i.getModel()}" /> </td>

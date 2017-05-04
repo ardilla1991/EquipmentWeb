@@ -97,3 +97,6 @@ body {
 
 .tab-rented-list{padding: 5px 12px; border: 1px solid green; border-bottom: 0px; background-color: gray; color: #fff; cursor: pointer;}
 .tab-rented-list.active {background-color: transparent; color: #000}
+
+.tab-content{display: none;}
+.tab-active{display: block;}

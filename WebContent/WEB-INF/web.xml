@@ -14,10 +14,10 @@
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/MainServlet</url-pattern>
   </servlet-mapping>
-  <!-- jsp-config>
+  <jsp-config>
       <taglib>
           <taglib-uri>/WEB-INF/tld/customTagLibrary</taglib-uri>
           <taglib-location>/WEB-INF/tld/customTagLibrary.tld</taglib-location>
       </taglib>
-  </jsp-config -->
+  </jsp-config>
 </web-app>

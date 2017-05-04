@@ -3,77 +3,64 @@ package by.htp.equipment.command;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.entity.User;
+import by.htp.equipment.service.EquipmentService;
+import by.htp.equipment.service.EquipmentServiceImpl;
+import by.htp.equipment.service.ServiceNoSuchUserException;
+import by.htp.equipment.service.UserService;
+import by.htp.equipment.service.UserServiceImpl;
 import by.htp.rental.entity.Equipment;
 import by.htp.rental.launch.RentalRunner;
 import by.htp.rental.logic.RentalManager;
 
+import static by.htp.equipment.util.ConstantValue.*;
+
 public class LoginCommandAction implements CommanAction{
 
 	private static final String JSP_PATH = "jsp/";
+	private UserService userService;
+	private EquipmentService equipService;
+	
+	public LoginCommandAction() {
+		userService = new UserServiceImpl();
+		equipService = new EquipmentServiceImpl();
+	}
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String login = request.getParameter("login");
-		String password = request.getParameter("pass");
-		String page = "";
-		if ( "user".equals(login) && "user".equals(password)) {
-			
-			RentalRunner rentalRunner = new RentalRunner();
-			try {
-				RentalManager rentalManager = rentalRunner.mainRunner();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		String login = request.getParameter(REQUEST_PARAM_LOGIN);
+		String password = request.getParameter(REQUEST_PARAM_PASSWORD);
+		String page = PAGE_DEFAULT;
+		
+		User user;
+		try {
+			user = userService.authorise(login, password);
+			if ( !user.isRole() ) {
+				HashMap<Integer, Equipment> equipment = equipService.list();
+				request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
+				page = JSP_PATH + PAGE_USER_MAIN;
+			} else {
+				RentalRunner rentalRunner = new RentalRunner();
+				try {
+					RentalManager rentalManager = rentalRunner.mainRunner();
+					ArrayList<Equipment> eq = new ArrayList<Equipment>();
+					eq = rentalManager.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
+					request.setAttribute(REQUEST_PARAM_LIST_EQ, eq);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				page = JSP_PATH + PAGE_ADMIN_MAIN;
 			}
-			
-			/*List<User> users = new ArrayList<User>();
-			users.add(new User("user1", "user1", false));
-			users.add(new User("user2", "user2", false));
-			users.add(new User("user3", "user3", false));
-			request.setAttribute("list", users);*/
-			
-			RentalRunner rentalRunner1 = new RentalRunner();
-			RentalManager rentalManager;
-			try {
-				rentalManager = rentalRunner1.mainRunner();
-				HashMap<Integer, Equipment> eq = new HashMap<Integer, Equipment>();
-				eq = rentalManager.getRentStation().getSpareEquipments();
-				System.out.println(eq);
-				request.setAttribute("equipments", eq);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			page = JSP_PATH + "/user.jsp";
-			// список оборудования доступного к прокату из XML ( каталог )
-		} else if ( "admin".equals(login) && "admin".equals(password) ) {
-			RentalRunner rentalRunner = new RentalRunner();
-			try {
-				RentalManager rentalManager = rentalRunner.mainRunner();
-				ArrayList<Equipment> eq = new ArrayList<Equipment>();
-				eq = rentalManager.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
-				//System.out.println(eq);
-				request.setAttribute("equipments", eq);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			/*List<User> users = new ArrayList<User>();
-			users.add(new User("admin1", "admin1", true));
-			users.add(new User("admin2", "admin2", true));
-			users.add(new User("admin3", "admin3", true));
-			request.setAttribute("list", users);*/
-			page = JSP_PATH + "/admin.jsp";
-		} else {
-			page = JSP_PATH + "/error.jsp";
-		}
+		} catch (ServiceNoSuchUserException e1) {
+			//e1.printStackTrace();
+			page = JSP_PATH + PAGE_ERROR;
+			request.setAttribute(REGUEST_PARAM_ERROR_MSG, e1.getMessage());
+		}	
+		
 		return page;
 	}
 
