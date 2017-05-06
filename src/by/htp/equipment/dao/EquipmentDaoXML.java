@@ -25,14 +25,6 @@ public class EquipmentDaoXML implements EquipmentDao{
 		return equipments;
 	}
 
-	public void setEquipments(List<Equipment> equipmentsList) {
-		for ( Equipment equipment : equipmentsList ) {
-			equipment.setId(generateIdOfEquipment());
-			equipments.add(equipment);
-			spareEquipments.add(equipment);
-		}
-	}
-
 	public List<Equipment> list() {
 		
 		return equipments;
@@ -44,7 +36,7 @@ public class EquipmentDaoXML implements EquipmentDao{
 		spareEquipments.add(equipment);
 	}
 	
-	private static int generateIdOfEquipment() {
+	private int generateIdOfEquipment() {
 		return (int) (Math.random() * 100000);
 	}
 	

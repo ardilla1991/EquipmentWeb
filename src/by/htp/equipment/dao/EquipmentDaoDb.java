@@ -1,12 +1,10 @@
 package by.htp.equipment.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import by.htp.equipment.entity.Equipment;
 
-public class EquipmentDaoImpl implements EquipmentDao{
-	
+public class EquipmentDaoDb implements EquipmentDao{
 	//private static List<Equipment> equipments = new ArrayList<Equipment>();
 	//private static List<Equipment> spareEquipments = new ArrayList<Equipment>();
 	//private static List<Equipment> engagedEquipments = new ArrayList<Equipment>();
@@ -24,7 +22,6 @@ public class EquipmentDaoImpl implements EquipmentDao{
 	public List<Equipment> getEquipments() {
 		return null;
 	}
-
 
 	public List<Equipment> list() {
 		
@@ -44,7 +41,7 @@ public class EquipmentDaoImpl implements EquipmentDao{
 	public void addEngagedEquipment(Equipment eq) {
 		//engagedEquipments.add(eq);
 	}
-	
+		
 	public void addSpareEquipment(Equipment eq) {
 		//engagedEquipments.add(eq);
 	}	
@@ -61,5 +58,4 @@ public class EquipmentDaoImpl implements EquipmentDao{
 	public String toString() {
 		return "";
 	}
-
 }

@@ -44,18 +44,10 @@ public class LoginCommandAction implements CommandAction{
 				List<Equipment> equipment = equipService.listOfSpareEquipments();
 				System.out.println(equipment);
 				request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
-				System.out.println("ok");
 				page = PAGE_USER_MAIN;
 			} else {
-				RentalRunner rentalRunner = new RentalRunner();
-				try {
-					RentalManager rentalManager = rentalRunner.mainRunner();
-					ArrayList<Equipment> eq = new ArrayList<Equipment>();
-					eq = rentalManager.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
-					request.setAttribute(REQUEST_PARAM_LIST_EQ, eq);
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+				//List<Equipment> eq = equipService.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
+				request.setAttribute(REQUEST_PARAM_LIST_EQ, null);
 				page = PAGE_ADMIN_MAIN;
 			}
 		} catch (ServiceNoSuchUserException e1) {

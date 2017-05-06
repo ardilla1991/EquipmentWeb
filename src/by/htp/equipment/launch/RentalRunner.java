@@ -38,55 +38,12 @@ public class RentalRunner {
 	public RentalManager mainRunner() throws ClassNotFoundException {
 		RentStation rentStation = new RentStation();
 
-		addEquipmentsFromXML(rentStation);
+		//addEquipmentsFromXML(rentStation);
 		RentalManager rentalManager = start(rentStation);
 		
 		return rentalManager;
 	}
-	
-	private void addEquipmentsFromXML(RentStation rentStation) {
-		
-		//isXMLAccordingWithXSD();
-		startParser("stax", rentStation); // "sax", "dom", "stax"
-	}
-	
-	private void startParser(String parserType, RentStation rentStation) {
-		EquipmentBuilderFactory sFactory = new EquipmentBuilderFactory();
-		AbstractEquipmentsBuilder builder = sFactory.createEquipmentBuilder(parserType);
-		builder.buildListEquipments(XMLFilePath);
-		List<Equipment> equipments = builder.getEquipments();
-		
-		for (Equipment  eq : equipments) {
-			//System.out.println(eq);
-			rentStation.addEquipment(eq);
-		}
-	}
-	
-	private void isXMLAccordingWithXSD() {
-		String filename = XMLFilePath;
-		String schemaname = "D:\\java\\JD1\\rental\\resource\\equipmentsSchema.xsd";
-		String logname = "D:\\java\\JD1\\rental\\resource\\log.txt";
-		Schema schema = null;
-		String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-		SchemaFactory factory = SchemaFactory.newInstance(language);
-		try {
-			// установка проверки с использованием XSD
-			schema = factory.newSchema(new File(schemaname));
-			SAXParserFactory spf = SAXParserFactory.newInstance();
-			spf.setSchema(schema);
-			// создание объекта-парсера
-			SAXParser parser = spf.newSAXParser();
-			// установка обработчика ошибок и запуск
-			parser.parse(filename, new HandlerBase());
-			System.out.println(filename + " is valid");
-		} catch (ParserConfigurationException e) {
-			System.err.println(filename + " config error: " + e.getMessage());
-		} catch (SAXException e) {
-			System.err.println(filename + " SAX error: " + e.getMessage());
-		} catch (IOException e) {
-			System.err.println("I/O error: " + e.getMessage());
-		}
-	}
+
 	
 	private RentalManager start(RentStation rentStation) throws ClassNotFoundException {
 

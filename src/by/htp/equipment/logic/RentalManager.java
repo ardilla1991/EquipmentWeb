@@ -71,23 +71,5 @@ public class RentalManager {
 		return order.getRentDate().getTime() + order.getRentPeriod() * 60 * 60 < new Date().getTime();
 	}
 	
-	public ArrayList<Equipment> getRentedEquipmentsByTime(long from, long to) {
-		ArrayList<Equipment> eq = new ArrayList<Equipment>();
-		for (ArrayList<Order> value : (orderDB.getUnits()).values()) {
-			for (int i = 0; i < value.size(); i++){
-				if ( value.get(i) != null && value.get(i).getRentDate().getTime() >= from 
-						&& value.get(i).getRentDate().getTime() <= to ) {
-					//System.out.println(value.get(i).getEquipment());
-					eq.add(value.get(i).getEquipment());
-				}
-			}
-		}
-		return eq;
-	}
-
-	public RentStation getRentStation() {
-		return rentStation;
-	}
-	
 	
 }

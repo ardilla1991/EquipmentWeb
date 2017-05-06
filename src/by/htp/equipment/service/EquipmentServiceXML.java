@@ -8,9 +8,7 @@ import by.htp.equipment.dao.EquipmentDaoXML;
 import by.htp.equipment.entity.Equipment;
 import static by.htp.equipment.util.ConstantValue.*;
 
-public class EquipmentServiceXML implements EquipmentService{	
-	
-	private static EquipmentDaoXML dao = null;
+public class EquipmentServiceXML extends EquipmentServiceImpl{	
 	
 	static {
 		dao = new EquipmentDaoXML();
@@ -18,27 +16,19 @@ public class EquipmentServiceXML implements EquipmentService{
 	}
 	
 	public EquipmentServiceXML() {
+		super();
 		System.out.println("service xml");
-		//dao = new EquipmentDaoXML();
 	}
 	
 	public static void setList() {
+		
 		EquipmentBuilderFactory sFactory = new EquipmentBuilderFactory();
 		AbstractEquipmentsBuilder builder = sFactory.createEquipmentBuilder(XML_PARSER_TYPE);
 		builder.buildListEquipments(XML_FILE_PATH);
 
-		dao.setEquipments(builder.getEquipments());
+		for ( Equipment equipment : builder.getEquipments() ) {
+			dao.addEquipment(equipment);
+		}
 	}
 	
-	public List<Equipment> list() {
-		//setList();
-			
-		return dao.getEquipments();
-	}
-	
-	public List<Equipment> listOfSpareEquipments() {
-		//setList();
-		
-		return dao.getSpareEquipments();
-	}
 }

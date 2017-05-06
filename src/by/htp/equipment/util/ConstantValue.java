@@ -23,4 +23,6 @@ public final class ConstantValue {
 	public static final String XML_FILE_PATH = "D:\\java\\JD1\\EquipmentWeb\\resource\\equipments.xml";
 	public static final String XML_PARSER_TYPE = "sax";  // or "dom", or "stax"
 	
+	public static final int NUM_ALLOW_EQUIPMENT_FOR_RENT = 3;
+	
 }

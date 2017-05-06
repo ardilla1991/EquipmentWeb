@@ -11,7 +11,7 @@ public class EquipmentServiceChooser {
 				return new EquipmentServiceXML();
 			case "db":
 				System.out.println("db storage");
-				return new EquipmentServiceImpl();
+				return new EquipmentServiceDb();
 			default:
 				break;
 		}
