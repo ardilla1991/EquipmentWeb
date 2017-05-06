@@ -18,7 +18,7 @@ import by.htp.rental.logic.RentalManager;
 
 import static by.htp.equipment.util.ConstantValue.*;
 
-public class LoginCommandAction implements CommanAction{
+public class LoginCommandAction implements CommandAction{
 
 	private static final String JSP_PATH = "jsp/";
 	private UserService userService;

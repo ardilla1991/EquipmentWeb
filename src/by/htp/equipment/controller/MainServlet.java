@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import by.htp.equipment.command.CommanAction;
+import by.htp.equipment.command.CommandAction;
 import by.htp.equipment.command.CommandChooser;
 import by.htp.rental.launch.RentalRunner;
 
@@ -37,7 +37,7 @@ public class MainServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String page = null;
 		if ( action != null ) {
-			CommanAction currAction = CommandChooser.chooseAction(action);
+			CommandAction currAction = CommandChooser.chooseAction(action);
 			page = currAction.execute(request, response);
 			
 			RequestDispatcher disp = request.getRequestDispatcher(page);
