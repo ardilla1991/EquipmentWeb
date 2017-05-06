@@ -70,12 +70,12 @@
               <tbody>
                 <c:forEach items="${list_eq}" var="equip">
                 	<c:choose>
-	                	<c:when  test="${cg:isInstanceOf(equip.value, 'MainEquipment')}">
+	                	<c:when  test="${cg:isInstanceOf(equip, 'MainEquipment')}">
 					     	<tr> 
-					     		<td> <c:out value="${equip.value.getId()}"/> </td>
-					    		<td> <c:out value="${equip.value.getModel()}" /> </td>
-					     		<td> <c:out value="${equip.value.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.value.getPersonCategory()}" /> </td>
+					     		<td> <c:out value="${equip.getId()}"/> </td>
+					    		<td> <c:out value="${equip.getModel()}" /> </td>
+					     		<td> <c:out value="${equip.getPrice()}" /> </td>
+					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
 					     	</tr>
 				     	</c:when>
 			     	</c:choose>
@@ -94,12 +94,12 @@
               <tbody>
                 <c:forEach items="${list_eq}" var="equip">
                 	<c:choose>
-	                	<c:when  test="${cg:isInstanceOf(equip.value, 'Accessory')}">
+	                	<c:when  test="${cg:isInstanceOf(equip, 'Accessory')}">
 					     	<tr> 
-					     		<td> <c:out value="${equip.value.getId()}"/> </td>
-					    		<td> <c:out value="${equip.value.getModel()}" /> </td>
-					     		<td> <c:out value="${equip.value.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.value.getPersonCategory()}" /> </td>
+					     		<td> <c:out value="${equip.getId()}"/> </td>
+					    		<td> <c:out value="${equip.getModel()}" /> </td>
+					     		<td> <c:out value="${equip.getPrice()}" /> </td>
+					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
 					     	</tr>
 				     	</c:when>
 			     	</c:choose>

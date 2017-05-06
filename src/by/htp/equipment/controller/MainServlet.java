@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.command.CommandAction;
 import by.htp.equipment.command.CommandChooser;
-import by.htp.rental.launch.RentalRunner;
+import by.htp.equipment.launch.RentalRunner;
 
 /**
  * Servlet implementation class MainServlet
@@ -39,6 +39,7 @@ public class MainServlet extends HttpServlet {
 		if ( action != null ) {
 			CommandAction currAction = CommandChooser.chooseAction(action);
 			page = currAction.execute(request, response);
+			System.out.println(page);
 			
 			RequestDispatcher disp = request.getRequestDispatcher(page);
 			disp.forward(request, response);

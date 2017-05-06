@@ -9,6 +9,6 @@ version="2.0">
 	<function>
 	    <name>isInstanceOf</name>
 	    <function-class>by.htp.equipment.util.TagUtils</function-class>
-	    <function-signature>java.lang.Boolean isInstanceOf(by.htp.rental.entity.Equipment, java.lang.String)</function-signature>
+	    <function-signature>java.lang.Boolean isInstanceOf(by.htp.equipment.entity.Equipment, java.lang.String)</function-signature>
 	</function>
 </taglib>

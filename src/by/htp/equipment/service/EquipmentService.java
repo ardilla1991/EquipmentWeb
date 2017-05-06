@@ -1,10 +1,12 @@
 package by.htp.equipment.service;
 
-import java.util.HashMap;
-import by.htp.rental.entity.Equipment;
+import java.util.List;
+
+import by.htp.equipment.entity.Equipment;
 
 public interface EquipmentService {
 	
-	//List<Equipment> list();
-	HashMap<Integer, Equipment> list();
+	List<Equipment> list();
+	
+	List<Equipment> listOfSpareEquipments();
 }
