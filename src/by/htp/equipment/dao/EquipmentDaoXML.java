@@ -1,8 +1,13 @@
 package by.htp.equipment.dao;
 
+import static by.htp.equipment.util.ConstantValue.XML_FILE_PATH;
+import static by.htp.equipment.util.ConstantValue.XML_PARSER_TYPE;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import by.htp.equipment.builder.AbstractEquipmentsBuilder;
+import by.htp.equipment.builder.EquipmentBuilderFactory;
 import by.htp.equipment.entity.Equipment;
 
 public class EquipmentDaoXML implements EquipmentDao{
@@ -10,6 +15,23 @@ public class EquipmentDaoXML implements EquipmentDao{
 	private static List<Equipment> equipments = new ArrayList<Equipment>();
 	private static List<Equipment> spareEquipments = new ArrayList<Equipment>();
 	private static List<Equipment> engagedEquipments = new ArrayList<Equipment>();
+	
+	public EquipmentDaoXML() {
+		super();
+		setList();
+	}
+	
+	public void setList() {
+		if ( equipments.isEmpty() ) {
+			EquipmentBuilderFactory sFactory = new EquipmentBuilderFactory();
+			AbstractEquipmentsBuilder builder = sFactory.createEquipmentBuilder(XML_PARSER_TYPE);
+			builder.buildListEquipments(XML_FILE_PATH);
+	
+			for ( Equipment equipment : builder.getEquipments() ) {
+				addEquipment(equipment);
+			}
+		}
+	}
 	
 	public List<Equipment> getSpareEquipments() {
 		

@@ -20,9 +20,12 @@ public final class ConstantValue {
 	public static final String REGUEST_PARAM_ERROR_MSG = "error_msg";
 	
 	public static final String EQUIPMETN_STORAGE = "xml"; // or "db"
-	public static final String XML_FILE_PATH = "D:\\java\\JD1\\EquipmentWeb\\resource\\equipments.xml";
+	public static final String XML_FILE_PATH = "D:\\java\\JD1\\EquipmentWeb\\resources\\equipments.xml";
 	public static final String XML_PARSER_TYPE = "sax";  // or "dom", or "stax"
 	
 	public static final int NUM_ALLOW_EQUIPMENT_FOR_RENT = 3;
+	
+	public static final String SQL_STATEMENT_SELECT_USERS = "SELECT * FROM user";
+	public static final String SQL_STATEMENT_SELECT_USER = "SELECT * FROM user WHERE login=? AND password=?";
 	
 }

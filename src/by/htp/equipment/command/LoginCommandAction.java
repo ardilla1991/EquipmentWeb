@@ -1,6 +1,5 @@
 package by.htp.equipment.command;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.entity.User;
-import by.htp.equipment.launch.RentalRunner;
-import by.htp.equipment.logic.RentalManager;
+//import by.htp.equipment.launch.RentalRunner;
+//import by.htp.equipment.logic.RentalManager;
 import by.htp.equipment.service.EquipmentService;
-import by.htp.equipment.service.EquipmentServiceChooser;
 import by.htp.equipment.service.EquipmentServiceImpl;
+import by.htp.equipment.service.OrderService;
+import by.htp.equipment.service.OrderServiceImpl;
 import by.htp.equipment.service.ServiceNoSuchUserException;
 import by.htp.equipment.service.UserService;
 import by.htp.equipment.service.UserServiceImpl;
@@ -24,10 +24,12 @@ public class LoginCommandAction implements CommandAction{
 
 	private UserService userService;
 	private EquipmentService equipService;
+	private OrderService orderService;
 	
 	public LoginCommandAction() {
 		userService = new UserServiceImpl();
-		equipService = EquipmentServiceChooser.chooseStorage();
+		equipService = new EquipmentServiceImpl();
+		orderService = new OrderServiceImpl();
 	}
 	
 	@Override
@@ -40,14 +42,16 @@ public class LoginCommandAction implements CommandAction{
 		User user;
 		try {
 			user = userService.authorise(login, password);
+			orderService.prepareBase(equipService);
 			if ( !user.isRole() ) { // simple user
 				List<Equipment> equipment = equipService.listOfSpareEquipments();
-				System.out.println(equipment);
+				//System.out.println(equipment);
 				request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
 				page = PAGE_USER_MAIN;
 			} else {
-				//List<Equipment> eq = equipService.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
-				request.setAttribute(REQUEST_PARAM_LIST_EQ, null);
+				List<Equipment> equipment = orderService.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());
+				//System.out.println(equipment);
+				request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
 				page = PAGE_ADMIN_MAIN;
 			}
 		} catch (ServiceNoSuchUserException e1) {
@@ -58,6 +62,5 @@ public class LoginCommandAction implements CommandAction{
 		
 		return page;
 	}
-
 	
 }

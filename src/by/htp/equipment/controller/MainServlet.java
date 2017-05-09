@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.command.CommandAction;
 import by.htp.equipment.command.CommandChooser;
-import by.htp.equipment.launch.RentalRunner;
 
 /**
  * Servlet implementation class MainServlet
@@ -30,6 +29,8 @@ public class MainServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("do post");
+		//UserDao dao = new UserDaoImpl();
+		//dao.fetchByCredentials("", "");
 		processRequest(request, response);
 	}
 	

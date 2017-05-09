@@ -8,6 +8,9 @@ public class EquipmentDaoDb implements EquipmentDao{
 	//private static List<Equipment> equipments = new ArrayList<Equipment>();
 	//private static List<Equipment> spareEquipments = new ArrayList<Equipment>();
 	//private static List<Equipment> engagedEquipments = new ArrayList<Equipment>();
+	public EquipmentDaoDb() {
+		
+	}
 	
 	public List<Equipment> getSpareEquipments() {
 		

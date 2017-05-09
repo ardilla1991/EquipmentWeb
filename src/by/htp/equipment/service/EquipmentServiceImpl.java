@@ -6,15 +6,20 @@ import java.util.Date;
 import java.util.List;
 
 import by.htp.equipment.dao.EquipmentDao;
+import by.htp.equipment.dao.EquipmentDaoChooser;
 import by.htp.equipment.entity.Accessory;
 import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.entity.MainEquipment;
 import by.htp.equipment.entity.Order;
 import by.htp.equipment.entity.Person;
 
-public abstract class EquipmentServiceImpl implements EquipmentService{	
+public class EquipmentServiceImpl implements EquipmentService{	
 
-	protected static EquipmentDao dao = null;
+	private EquipmentDao dao = EquipmentDaoChooser.chooseStorage();
+	
+	public EquipmentServiceImpl() {
+		super();
+	}
 	
 	public List<Equipment> list() {
 
@@ -46,56 +51,5 @@ public abstract class EquipmentServiceImpl implements EquipmentService{
 		}
 		return null;
 	}
-	
-	/*public boolean rent(Order order) {
-		if ( isExceededNumberOfEquipmentForUser(order) )
-				return false;
-
-		orderDB.addOrder(order); // add order to person
-		rentStation.addEngagedEquipment(order.getEquipment());
-		rentStation.deleteSpareEquipment(order.getEquipment());
-		
-		return true;
-	}
-	
-	private boolean isExceededNumberOfEquipmentForUser(Order order) {
-		if ( order.getEquipment() instanceof Accessory ) {
-			return false;
-		}
-		
-		if ( countRentedMainEquipmentByUser(order.getPerson()) == NUM_ALLOW_EQUIPMENT_FOR_RENT ) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	private int countRentedMainEquipmentByUser(Person person) {
-		ArrayList<Order> orders = orderDB.getEquipmentsOfPerson(person);
-		int counter = 0;
-		for (Order order : orders ){
-			if ( order.getEquipment() instanceof MainEquipment ) {
-				counter++;
-			}
-		}
-		
-		return counter;
-	}
-	
-	public void resetEquipments() {
-		for (ArrayList<Order> value : (orderDB.getUnits()).values()) {
-			for (int i = 0; i < value.size(); i++){
-				if ( value.get(i) != null && isEquipmentIsRentByDate(value.get(i))) {
-					rentStation.deleteEngagedEquipment(value.get(i).getEquipment());
-					rentStation.addSpareEquipment(value.get(i).getEquipment());
-					value.remove(i);	
-				}
-			}
-		}
-	}
-	
-	private boolean isEquipmentIsRentByDate(Order order) {
-		return order.getRentDate().getTime() + order.getRentPeriod() * 60 * 60 < new Date().getTime();
-	}*/
 
 }

@@ -1,4 +1,4 @@
-package by.htp.equipment.logic;
+package by.htp.equipment.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,13 @@ import java.util.HashMap;
 import by.htp.equipment.entity.Order;
 import by.htp.equipment.entity.Person;
 
-public class OrderDB {
+public class OrderDaoXML implements OrderDao{
+	private static HashMap <Integer, ArrayList<Order>> units = new HashMap<>();
 	
-	private HashMap <Integer, ArrayList<Order>> units = new HashMap<>();
+	public OrderDaoXML() {
+		super();
+		setOrders();
+	}
 
 	public void addOrder(Order newOrder) {
 		ArrayList<Order> eq;
@@ -45,4 +49,7 @@ public class OrderDB {
 		return str;
 	}
 	
+	private void setOrders() {
+		
+	}
 }

@@ -9,4 +9,8 @@ public interface EquipmentService {
 	List<Equipment> list();
 	
 	List<Equipment> listOfSpareEquipments();
+	
+	public List<Equipment> findEquipmentByParams(double price);
+	
+	public Equipment findSpareEquipmentByType(String type) throws ClassNotFoundException;
 }
