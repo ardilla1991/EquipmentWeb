@@ -73,6 +73,7 @@ body {
 }
 .main .page-header {
   margin-top: 0;
+  display: inline-block;
 }
 
 
@@ -100,3 +101,6 @@ body {
 
 .tab-content{display: none;}
 .tab-active{display: block;}
+
+.makeOrder{float:right; display: inline-block;}
+.makeOrder>div, .makeOrder>form{display: inline-block;}

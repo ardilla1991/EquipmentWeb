@@ -52,4 +52,10 @@ public class EquipmentServiceImpl implements EquipmentService{
 		return null;
 	}
 
+	public List<Equipment> prepareEquipmentForRent(String equipmentsStr) {
+		String[] ids = equipmentsStr.split(",");
+		List<Equipment> equipments = dao.getEquipmentsByIds(ids);
+
+		return equipments;
+	}
 }

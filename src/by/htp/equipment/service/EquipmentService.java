@@ -13,4 +13,6 @@ public interface EquipmentService {
 	public List<Equipment> findEquipmentByParams(double price);
 	
 	public Equipment findSpareEquipmentByType(String type) throws ClassNotFoundException;
+	
+	public List<Equipment> prepareEquipmentForRent(String equipmentsStr);
 }

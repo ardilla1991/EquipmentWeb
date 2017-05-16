@@ -2,11 +2,13 @@ package by.htp.equipment.entity;
 
 public class User {
 	
+	private Long userId;
 	private String  login;
 	private String password;
 	private boolean role;
 	
 	private String firstName;
+	private String name;
 	private String secondName;
 	private String passport;
 	
@@ -14,8 +16,9 @@ public class User {
 		
 	}
 	
-	public User(String login, String password, boolean role) {
+	public User(Long userId, String login, String password, boolean role) {
 		super();
+		this.userId = userId;
 		this.login = login;
 		this.password = password;
 		this.role = role;
@@ -67,5 +70,21 @@ public class User {
 
 	public void setPassport(String passport) {
 		this.passport = passport;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }

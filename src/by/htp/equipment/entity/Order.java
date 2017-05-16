@@ -1,28 +1,26 @@
 package by.htp.equipment.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Order {
 
-	private Person person;
+	private Long orderId;
+	private User user;
 	private Equipment equipment;
-	private Date rentDate;
-	private int rentPeriod;
+	
+	private Date dateStart;
+	private Date dateEnd;
 
-	public Order(Person person, Equipment equipment, int rentPeriod) {
-		this.person = person;
+	public Order() {
+		super();
+	}
+	
+	public Order(User user, Equipment equipment, Date dateStart, Date dateEnd) {
+		this.user = user;
 		this.equipment = equipment;
 		
-		this.rentDate = new Date();
-		this.rentPeriod = rentPeriod;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
+		this.dateStart = dateStart;
+		this.dateEnd = dateEnd;
 	}
 
 	public Equipment getEquipment() {
@@ -33,30 +31,47 @@ public class Order {
 		this.equipment = equipment;
 	}
 	
-	public Date getRentDate() {
-		return rentDate;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setRentDate(Date rentDate) {
-		this.rentDate = rentDate;
-	}
-	
-	public int getRentPeriod() {
-		return rentPeriod;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
-	public void setRentPeriod(int rentPeriod) {
-		this.rentPeriod = rentPeriod;
+	public User getUser() {
+		return user;
 	}
-	
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getDateStart() {
+		return dateStart;
+	}
+
+	public void setDateStart(Date dateStart) {
+		this.dateStart = dateStart;
+	}
+
+	public Date getDateEnd() {
+		return dateEnd;
+	}
+
+	public void setDateEnd(Date dateEnd) {
+		this.dateEnd = dateEnd;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dateEnd == null) ? 0 : dateEnd.hashCode());
+		result = prime * result + ((dateStart == null) ? 0 : dateStart.hashCode());
 		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
-		result = prime * result + ((person == null) ? 0 : person.hashCode());
-		result = prime * result + ((rentDate == null) ? 0 : rentDate.hashCode());
-		result = prime * result + rentPeriod;
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -69,23 +84,33 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
+		if (dateEnd == null) {
+			if (other.dateEnd != null)
+				return false;
+		} else if (!dateEnd.equals(other.dateEnd))
+			return false;
+		if (dateStart == null) {
+			if (other.dateStart != null)
+				return false;
+		} else if (!dateStart.equals(other.dateStart))
+			return false;
 		if (equipment == null) {
 			if (other.equipment != null)
 				return false;
 		} else if (!equipment.equals(other.equipment))
 			return false;
-		if (person == null) {
-			if (other.person != null)
+		if (orderId == null) {
+			if (other.orderId != null)
 				return false;
-		} else if (!person.equals(other.person))
+		} else if (!orderId.equals(other.orderId))
 			return false;
-		if (rentDate == null) {
-			if (other.rentDate != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!rentDate.equals(other.rentDate))
-			return false;
-		if (rentPeriod != other.rentPeriod)
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
+	
+	
 }

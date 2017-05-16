@@ -1,6 +1,6 @@
 package by.htp.equipment.entity;
 
-public abstract class Equipment {
+public class Equipment {
 	
 	private int id;
 	private String model;
@@ -9,6 +9,8 @@ public abstract class Equipment {
 	private double width;
 	private double height;
 	private PersonCategoryEnum personCategory; // for child or for adult 
+	private boolean isRent;
+	private int categoryId;
 	
 	public Equipment() {
 		
@@ -82,8 +84,25 @@ public abstract class Equipment {
 
 	@Override
 	public String toString() {
-		return "model=" + model + ", price=" + price + ", weight=" + weight + ", width=" + width + ", height=" + height
-				+ ", personCategory=" + personCategory + ", ";
+		return "Equipment [id=" + id + ", model=" + model + ", price=" + price + ", weight=" + weight + ", width="
+				+ width + ", height=" + height + ", personCategory=" + personCategory + ", isRent=" + isRent
+				+ ", categoryId=" + categoryId + "]";
+	}
+
+	public boolean getIsRent() {
+		return isRent;
+	}
+
+	public void setIsRent(boolean isRent) {
+		this.isRent = isRent;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 }

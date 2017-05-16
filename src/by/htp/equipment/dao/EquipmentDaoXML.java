@@ -82,5 +82,11 @@ public class EquipmentDaoXML implements EquipmentDao{
 	public String toString() {
 		return "RentStation [equipments=" + equipments + "]";
 	}
+
+	@Override
+	public List<Equipment> getEquipmentsByIds(String[] ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -42,11 +42,13 @@ public class LoginCommandAction implements CommandAction{
 		User user;
 		try {
 			user = userService.authorise(login, password);
-			orderService.prepareBase(equipService);
+			//orderService.prepareBase(equipService);
 			if ( !user.isRole() ) { // simple user
+				System.out.println("OK OK OK ");
 				List<Equipment> equipment = equipService.listOfSpareEquipments();
-				//System.out.println(equipment);
+				System.out.println(equipment);
 				request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
+				
 				page = PAGE_USER_MAIN;
 			} else {
 				List<Equipment> equipment = orderService.getRentedEquipmentsByTime(new Date().getTime() - 60 * 60, new Date().getTime());

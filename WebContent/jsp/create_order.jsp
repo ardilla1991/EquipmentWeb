@@ -47,14 +47,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Available for rent</h1>
-		  <div class="makeOrder">
-		  	<div><span>Total price: </span><span id="totalCalc">0</span></div>
-		  	<form action="MainServlet" method="GET">
-		  		<input type="hidden" name="action" value="make_order" />
-		  		<input id="equipments_ids" type="hidden" name="equipments_ids" value="" />
-		  		<input type="submit" value="make order" onclick="return makeOrder();"/>
-		  	</form>
-		  </div>
+
           <div class="row placeholders">
             <div class="col-xs-6 placeholder">
               <div class="tab-rented-list tab-title active">Main equipment</div>
@@ -64,33 +57,34 @@
             </div>
           </div>
 
+		  <form action="MainServlet" method="GET">
+		  		<input type="hidden" name="action" value="create_order" />
+		  		<input type="text" name="user_id" />
+		  		<input type="text" name="equipment_id" />
+		  		<input type="text" name="date_start" />
+		  		<input type="text" name="date_end" />
+		  		<input type="submit" name="make order"/>
+		  </form>
+
           <!-- h2 class="sub-header">Rented Equipment</h2 -->
           <div class="table-responsive">
             <table class="table table-striped tab-content tab-active">
               <thead>
                 <tr>
-                  <th>Choose</th>
                   <th>#</th>
                   <th>Model</th>
                   <th>Price</th>
-                  <th>Weight</th>
-                  <th>Width</th>
-                  <th>Height</th>
                   <th>PersonCategory</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach items="${list_eq}" var="equip">
                 	<c:choose>
-	                	<c:when  test="${equip.getCategoryId()==1}">
+	                	<c:when  test="${cg:isInstanceOf(equip, 'MainEquipment')}">
 					     	<tr> 
-					     		<td> <input id="${equip.getId()}" class="eq_check" type="checkbox" name="choosedIds[]" value="${equip.getId()}"/></td>
 					     		<td> <c:out value="${equip.getId()}"/> </td>
 					    		<td> <c:out value="${equip.getModel()}" /> </td>
-					     		<td id="price_${equip.getId()}"> <c:out value="${equip.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.getWeight()}" /> </td>
-					     		<td> <c:out value="${equip.getWidth()}" /> </td>
-					     		<td> <c:out value="${equip.getHeight()}" /> </td>
+					     		<td> <c:out value="${equip.getPrice()}" /> </td>
 					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
 					     	</tr>
 				     	</c:when>
@@ -101,28 +95,20 @@
             <table class="table table-striped tab-content">
               <thead>
                 <tr>
-                  <th>Choose</th>
                   <th>#</th>
                   <th>Model</th>
                   <th>Price</th>
-                  <th>Weight</th>
-                  <th>Width</th>
-                  <th>Height</th>
                   <th>PersonCategory</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach items="${list_eq}" var="equip">
                 	<c:choose>
-	                	<c:when  test="${equip.getCategoryId()==3}">
+	                	<c:when  test="${cg:isInstanceOf(equip, 'Accessory')}">
 					     	<tr> 
-					     		<td> <input type="checkbox" name="choosedIds[]" value="${equip.getId()}"/></td>
 					     		<td> <c:out value="${equip.getId()}"/> </td>
 					    		<td> <c:out value="${equip.getModel()}" /> </td>
 					     		<td> <c:out value="${equip.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.getWeight()}" /> </td>
-					     		<td> <c:out value="${equip.getWidth()}" /> </td>
-					     		<td> <c:out value="${equip.getHeight()}" /> </td>
 					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
 					     	</tr>
 				     	</c:when>

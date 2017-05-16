@@ -23,5 +23,7 @@ public interface EquipmentDao {
 	public void deleteSpareEquipment(Equipment eq);
 	
 	public void deleteEngagedEquipment(Equipment eq);
+	
+	public List<Equipment> getEquipmentsByIds(String[] ids);
 
 }
