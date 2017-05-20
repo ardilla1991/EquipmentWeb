@@ -17,7 +17,7 @@ public class OrderDaoXML implements OrderDao{
 	}
 
 	@Override
-	public void createOrder(Order newOrder) {
+	public Long createOrder(Order newOrder) {
 		ArrayList<Order> eq;
 		if ( units.containsKey(newOrder.getUser().hashCode()) && units.get(newOrder.getUser().hashCode()).size() > 0  ) {
 			 eq = units.get(newOrder.getUser().hashCode());
@@ -26,6 +26,8 @@ public class OrderDaoXML implements OrderDao{
 		}
 		eq.add(newOrder);
 		units.put(newOrder.getUser().hashCode(), eq);
+		
+		return (long)0;
 	}
 
 	public HashMap<Integer, ArrayList<Order>> getUnits() {
@@ -64,6 +66,12 @@ public class OrderDaoXML implements OrderDao{
 
 	@Override
 	public List<Order> fetchAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Order> getOrdersByUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}

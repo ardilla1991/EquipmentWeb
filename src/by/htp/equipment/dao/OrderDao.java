@@ -10,11 +10,13 @@ import by.htp.equipment.entity.User;
 
 public interface OrderDao {
 
-	public void createOrder(Order newOrder);
+	public Long createOrder(Order newOrder);
 
 	public HashMap<Integer, ArrayList<Order>> getUnits();
 	
 	public ArrayList<Order> getEquipmentsOfPerson(User user);
 	
 	List<Order> fetchAll();
+	
+	List<Order> getOrdersByUser(User user);
 }

@@ -46,25 +46,7 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Available for rent</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 placeholder">
-              <div class="tab-rented-list tab-title active">Main equipment</div>
-            </div>
-            <div class="col-xs-6 placeholder">
-              <div class="tab-rented-list tab-title">Accessories</div>
-            </div>
-          </div>
-
-		  <form action="MainServlet" method="GET">
-		  		<input type="hidden" name="action" value="create_order" />
-		  		<input type="text" name="user_id" />
-		  		<input type="text" name="equipment_id" />
-		  		<input type="text" name="date_start" />
-		  		<input type="text" name="date_end" />
-		  		<input type="submit" name="make order"/>
-		  </form>
+          <h1 class="page-header">My Orders</h1>
 
           <!-- h2 class="sub-header">Rented Equipment</h2 -->
           <div class="table-responsive">
@@ -72,47 +54,19 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Model</th>
-                  <th>Price</th>
-                  <th>PersonCategory</th>
+                  <th>User</th>
+                  <th>date start</th>
+                  <th>date end</th>
                 </tr>
               </thead>
               <tbody>
-                <c:forEach items="${list_eq}" var="equip">
-                	<c:choose>
-	                	<c:when  test="${cg:isInstanceOf(equip, 'MainEquipment')}">
-					     	<tr> 
-					     		<td> <c:out value="${equip.getId()}"/> </td>
-					    		<td> <c:out value="${equip.getModel()}" /> </td>
-					     		<td> <c:out value="${equip.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
-					     	</tr>
-				     	</c:when>
-			     	</c:choose>
-		  		</c:forEach>
-              </tbody>
-            </table>
-            <table class="table table-striped tab-content">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Model</th>
-                  <th>Price</th>
-                  <th>PersonCategory</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach items="${list_eq}" var="equip">
-                	<c:choose>
-	                	<c:when  test="${cg:isInstanceOf(equip, 'Accessory')}">
-					     	<tr> 
-					     		<td> <c:out value="${equip.getId()}"/> </td>
-					    		<td> <c:out value="${equip.getModel()}" /> </td>
-					     		<td> <c:out value="${equip.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
-					     	</tr>
-				     	</c:when>
-			     	</c:choose>
+                <c:forEach items="${list_eq}" var="order">
+					<tr> 
+						<td> <c:out value="${order.getOrderId()}"/> </td>
+					    <td> <c:out value="${order.getUser().getUserId()}" /> </td>
+					    <td> <c:out value="${order.getDateStart()}" /> </td>
+					    <td> <c:out value="${order.getDateStart()}" /> </td>
+					</tr>
 		  		</c:forEach>
               </tbody>
             </table>

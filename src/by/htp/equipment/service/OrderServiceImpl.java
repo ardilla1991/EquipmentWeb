@@ -1,6 +1,7 @@
 package by.htp.equipment.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.sql.Date;
 
 import by.htp.equipment.dao.EquipmentDao;
@@ -28,18 +29,12 @@ public class OrderServiceImpl implements OrderService{
 	public boolean rent(Order order) {
 		if ( isExceededNumberOfEquipmentForUser(order) )
 				return false;
-	
-		dao.createOrder(order); // add order to person
-		daoEq.addEngagedEquipment(order.getEquipment());
-		daoEq.deleteSpareEquipment(order.getEquipment());
 		
 		return true;
 	}
 
 	private boolean isExceededNumberOfEquipmentForUser(Order order) {
-		if ( order.getEquipment() instanceof Accessory ) {
-			return false;
-		}
+	
 		
 		if ( countRentedMainEquipmentByUser(order.getUser()) == NUM_ALLOW_EQUIPMENT_FOR_RENT ) {
 			return true;
@@ -50,26 +45,21 @@ public class OrderServiceImpl implements OrderService{
 
 	private int countRentedMainEquipmentByUser(User user) {
 		ArrayList<Order> orders = dao.getEquipmentsOfPerson(user);
-		int counter = 0;
-		for (Order order : orders ){
-			if ( order.getEquipment() instanceof MainEquipment ) {
-				counter++;
-			}
-		}
+	
 		
-		return counter;
+		return 1;
 	}
 	
 	public void resetEquipments() {
-		for (ArrayList<Order> value : (dao.getUnits()).values()) {
+		/*for (ArrayList<Order> value : (dao.getUnits()).values()) {
 			for (int i = 0; i < value.size(); i++){
 				if ( value.get(i) != null && isEquipmentIsRentByDate(value.get(i))) {
 					daoEq.deleteEngagedEquipment(value.get(i).getEquipment());
 					daoEq.addSpareEquipment(value.get(i).getEquipment());
-					value.remove(i);	
+				value.remove(i);	
 				}
 			}
-		}
+		}*/
 	}
 	
 	private boolean isEquipmentIsRentByDate(Order order) {
@@ -78,7 +68,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	public void prepareBase(EquipmentService equipService) {
-		User person1 = new User(new Long(1), "user", "user", false);
+		/*User person1 = new User(new Long(1), "user", "user", false);
 
 		resetEquipments();
 		Equipment equipmentForRent;
@@ -105,7 +95,7 @@ public class OrderServiceImpl implements OrderService{
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 	
@@ -130,17 +120,23 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public Order makeOrder(User user, Equipment equipment, Date start, Date end) {
+	public Order makeOrder(User user, Date start, Date end) {
 		
 		Order order = new Order();
-		order.setEquipment(equipment);
+		//order.setEquipments(equipments);
 		order.setUser(user);
 		order.setDateStart(start);
 		order.setDateEnd(end);
 		
-		dao.createOrder(order);
+		Long id = dao.createOrder(order);
+		order.setOrderId(id);
 
 		// STUB!
-		return null;
+		return order;
+	}
+	
+	public List<Order> getOrderListByUser(User user) {
+		
+		return dao.getOrdersByUser(user);
 	}
 }

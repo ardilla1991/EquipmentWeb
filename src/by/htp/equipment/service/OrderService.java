@@ -2,6 +2,7 @@ package by.htp.equipment.service;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.entity.Order;
@@ -15,5 +16,7 @@ public interface OrderService {
 	
 	public ArrayList<Equipment> getRentedEquipmentsByTime(long from, long to);
 	
-	public Order makeOrder(User user, Equipment equipment, Date start, Date end);
+	public Order makeOrder(User user, Date start, Date end);
+	
+	public List<Order> getOrderListByUser(User user);
 }

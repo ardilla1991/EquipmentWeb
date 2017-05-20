@@ -58,8 +58,8 @@ public class EquipmentDaoXML implements EquipmentDao{
 		spareEquipments.add(equipment);
 	}
 	
-	private int generateIdOfEquipment() {
-		return (int) (Math.random() * 100000);
+	private Long generateIdOfEquipment() {
+		return (long) (Math.random() * 100000);
 	}
 	
 	public void addEngagedEquipment(Equipment eq) {

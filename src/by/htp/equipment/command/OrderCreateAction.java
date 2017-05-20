@@ -5,45 +5,64 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.equipment.entity.Bycicle;
 import by.htp.equipment.entity.Equipment;
+import by.htp.equipment.entity.Order;
 import by.htp.equipment.entity.User;
 import by.htp.equipment.service.OrderService;
 import by.htp.equipment.service.OrderServiceImpl;
+import by.htp.equipment.service.RentService;
+import by.htp.equipment.service.RentServiceImpl;
 
 import static by.htp.equipment.util.ConstantValue.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 public class OrderCreateAction implements CommandAction{
 
 	private OrderService service;
+	private RentService serviceRent; 
 	
 	
 	public OrderCreateAction() {
 		service = new OrderServiceImpl();
+		serviceRent = new RentServiceImpl();
 	}
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		//String page = PAGE_ORDER_ALL;
-		String page = PAGE_DEFAULT;
+		String page = PAGE_ORDER_ALL;
+		//String page = PAGE_DEFAULT;
 		
+		 
 		String userId = request.getParameter(PARAM_USER_ID);
-		String equipmentId = request.getParameter(PARAM_EQUIPMENT_ID);
+		String[] equipmentIds = request.getParameterValues(PARAM_CHOOSED_EQUIPMENTS_IDS);
+		//System.out.println("eq=");
+		//System.out.println(equipmentIds);
 		String dateStart = request.getParameter(PARAM_DATE_START);
 		String dateEnd = request.getParameter(PARAM_DATE_END);
 		
 		User user = new User();
 		user.setUserId(Long.valueOf(userId));
 		
-		Equipment equipment = new Bycicle();
-		//equipment.setId(Long.valueOf(equipmentId));
-		equipment.setId(Integer.valueOf(equipmentId));
+		List<Equipment> equipmentList = new ArrayList<Equipment>();
+		for ( int i = 0; i < equipmentIds.length; i++ ) {
+			Equipment eq = new Equipment();
+			eq.setId(Long.valueOf(equipmentIds[i]));
+			equipmentList.add(eq);
+		}
 		
-		System.out.println(dateStart);
+		//System.out.println(dateStart);
 		Date start = Date.valueOf(dateStart);
 		Date end = Date.valueOf(dateEnd);
 		
-		service.makeOrder(user, equipment, start, end);
+		Order order = service.makeOrder(user, start, end);
+		serviceRent.createRentedList(order, equipmentList);
+		
+		List<Order> orders = service.getOrderListByUser(user);
+		request.setAttribute(REQUEST_PARAM_LIST_EQ, orders);
+		System.out.println(orders);
 		
 		return page;
 	}

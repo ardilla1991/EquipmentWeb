@@ -2,7 +2,7 @@ package by.htp.equipment.entity;
 
 public class Equipment {
 	
-	private int id;
+	private Long id;
 	private String model;
 	private double price;
 	private double weight;
@@ -26,11 +26,11 @@ public class Equipment {
 		this.personCategory = personCategory;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -34,7 +34,7 @@ public class EquipmentDaoDb implements EquipmentDao{
 			System.out.println("oook");
 			while ( rs.next() ) {
 				System.out.println("next");
-				int id = rs.getInt(1);
+				Long id = rs.getLong(1);
 				String model = rs.getString(2);
 				double price = rs.getDouble(3);
 				double weight = rs.getDouble(4);
@@ -87,8 +87,8 @@ public class EquipmentDaoDb implements EquipmentDao{
 		//spareEquipments.add(equipment);
 	}
 	
-	private static int generateIdOfEquipment() {
-		return (int) (Math.random() * 100000);
+	private static Long generateIdOfEquipment() {
+		return (long) (Math.random() * 100000);
 	}
 	
 	public void addEngagedEquipment(Equipment eq) {
@@ -129,7 +129,7 @@ public class EquipmentDaoDb implements EquipmentDao{
 			}
 			ResultSet rs = ps.executeQuery();
 			while ( rs.next() ) {
-				int id = rs.getInt(1);
+				Long id = rs.getLong(1);
 				String model = rs.getString(2);
 				double price = rs.getDouble(3);
 				double weight = rs.getDouble(4);

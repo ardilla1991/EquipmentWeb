@@ -50,6 +50,7 @@
           <h1 class="page-header">Make order</h1>
 		  <form action="MainServlet" method="GET">
 				<input type="hidden" name="action" value="create_order" />
+				<input type="text" name="user_id" placeholder="user id"/>
 			  	<input type="text" name="date_start" placeholder="date start"/>
 			  	<input type="text" name="date_end" placeholder="date end"/>
 			  	<div class="table-responsive">
@@ -69,7 +70,7 @@
 		              <tbody>
 		                <c:forEach items="${list_eq}" var="equip">
 							     	<tr> 
-							     		<td> <input type="checkbox" name="choosedIds[]" value="${equip.getId()}" checked="checked"/></td>
+							     		<td> <input type="checkbox" name="choosedIds" value="${equip.getId()}" checked="checked"/></td>
 							     		<td> <c:out value="${equip.getId()}"/> </td>
 							    		<td> <c:out value="${equip.getModel()}" /> </td>
 							     		<td> <c:out value="${equip.getPrice()}" /> </td>

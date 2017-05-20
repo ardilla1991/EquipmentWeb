@@ -57,10 +57,7 @@
 		  </div>
           <div class="row placeholders">
             <div class="col-xs-6 placeholder">
-              <div class="tab-rented-list tab-title active">Main equipment</div>
-            </div>
-            <div class="col-xs-6 placeholder">
-              <div class="tab-rented-list tab-title">Accessories</div>
+              <div class="tab-rented-list tab-title active">Equipments</div>
             </div>
           </div>
 
@@ -88,38 +85,6 @@
 					     		<td> <c:out value="${equip.getId()}"/> </td>
 					    		<td> <c:out value="${equip.getModel()}" /> </td>
 					     		<td id="price_${equip.getId()}"> <c:out value="${equip.getPrice()}" /> </td>
-					     		<td> <c:out value="${equip.getWeight()}" /> </td>
-					     		<td> <c:out value="${equip.getWidth()}" /> </td>
-					     		<td> <c:out value="${equip.getHeight()}" /> </td>
-					     		<td> <c:out value="${equip.getPersonCategory()}" /> </td>
-					     	</tr>
-				     	</c:when>
-			     	</c:choose>
-		  		</c:forEach>
-              </tbody>
-            </table>
-            <table class="table table-striped tab-content">
-              <thead>
-                <tr>
-                  <th>Choose</th>
-                  <th>#</th>
-                  <th>Model</th>
-                  <th>Price</th>
-                  <th>Weight</th>
-                  <th>Width</th>
-                  <th>Height</th>
-                  <th>PersonCategory</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach items="${list_eq}" var="equip">
-                	<c:choose>
-	                	<c:when  test="${equip.getCategoryId()==3}">
-					     	<tr> 
-					     		<td> <input type="checkbox" name="choosedIds[]" value="${equip.getId()}"/></td>
-					     		<td> <c:out value="${equip.getId()}"/> </td>
-					    		<td> <c:out value="${equip.getModel()}" /> </td>
-					     		<td> <c:out value="${equip.getPrice()}" /> </td>
 					     		<td> <c:out value="${equip.getWeight()}" /> </td>
 					     		<td> <c:out value="${equip.getWidth()}" /> </td>
 					     		<td> <c:out value="${equip.getHeight()}" /> </td>
