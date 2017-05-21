@@ -26,6 +26,13 @@ public class EquipmentServiceImpl implements EquipmentService{
 		return dao.getEquipments();
 	}
 	
+	public List<Equipment> getListByCategory(String categoryIdS) {
+		int categoryId = Integer.valueOf(categoryIdS);
+		return dao.getListByCategory(categoryId);
+	}
+	
+	
+	
 	public List<Equipment> listOfSpareEquipments() {
 
 		return dao.getSpareEquipments();

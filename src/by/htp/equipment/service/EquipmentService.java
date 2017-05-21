@@ -8,6 +8,8 @@ public interface EquipmentService {
 	
 	List<Equipment> list();
 	
+	List<Equipment> getListByCategory(String categoryIdS);
+	
 	List<Equipment> listOfSpareEquipments();
 	
 	public List<Equipment> findEquipmentByParams(double price);

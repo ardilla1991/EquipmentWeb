@@ -14,6 +14,15 @@
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/MainServlet</url-pattern>
   </servlet-mapping>
+  <filter>
+  	  <display-name>LogginFilter</display-name>
+  	  <filter-name>LogginFilter</filter-name>
+  	  <filter-class>by.htp.equipment.filter.RequestLoggingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	  <filter-name>LogginFilter</filter-name>
+  	  <url-pattern>/MainServlet</url-pattern>
+  </filter-mapping>
   <jsp-config>
       <taglib>
           <taglib-uri>/WEB-INF/tld/customTagLibrary</taglib-uri>

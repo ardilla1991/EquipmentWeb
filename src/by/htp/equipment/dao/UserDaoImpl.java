@@ -39,12 +39,12 @@ public class UserDaoImpl implements UserDao{
 				//String firstName = rs.getString(4);
 				//String secondName = rs.getString(5);
 				//String passport = rs.getString(6);
-				boolean role = rs.getBoolean(5);
+				boolean role = rs.getBoolean(6);
 				
 				user = new User();
 				user.setLogin(log);
 				user.setPassword(pass);
-				user.setFirstName(name);
+				user.setName(name);
 				//user.setFirstName(firstName);
 				//user.setSecondName(secondName);
 				//user.setPassport(passport);

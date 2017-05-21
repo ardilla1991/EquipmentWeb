@@ -88,5 +88,11 @@ public class EquipmentDaoXML implements EquipmentDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Equipment> getListByCategory(int categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

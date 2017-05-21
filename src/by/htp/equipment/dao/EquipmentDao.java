@@ -7,6 +7,8 @@ import by.htp.equipment.entity.Equipment;
 public interface EquipmentDao {
 	
 	public List<Equipment> getSpareEquipments();
+
+	List<Equipment> getListByCategory(int categoryId);
 	
 	public List<Equipment> getEngagedEquipments();
 	

@@ -6,25 +6,62 @@ public final class ConstantValue {
 		
 	}
 	
+	public static final String JSP_FOLDER_AJAX = "AJAX/";
+	public static final String JSP_FOLDER_PATH = "/WEB-INF/jsp/";
+	public static final String PAGE_ERROR = JSP_FOLDER_PATH + "error.jsp";
+	public static final String PAGE_DEFAULT = "index.html";
+	
+	
+	/*********************************** ADMIN  ********************************************************/
+	
+	/************  PAGE  ****************/
+	public static final String PAGE_ADMIN = "admin/";
+	public static final String JSP_FOLDER_PATH_ADMIN = "/WEB-INF/jsp/" + PAGE_ADMIN;
+	public static final String PAGE_ADMIN_MAIN = JSP_FOLDER_PATH_ADMIN + "rented.jsp";
+	public static final String ADMIN_PAGE_CATEGORY_LIST = JSP_FOLDER_PATH_ADMIN + "categoryList.jsp";
+	
+	
+	/************   AJAX PAGE  ****************/
+	public static final String ADMIN_PAGE_EQUIPMENT_BY_CATEGORY = JSP_FOLDER_PATH_ADMIN + JSP_FOLDER_AJAX + "categories.jsp";
+	
+	
+	/************  ACTION  ****************/
+	public static final String ADMIN_ACTION_CATEGORY_LIST = "category_list";
+	public static final String ADMIN_ACTION_EQUIPMENT_LIST_BY_CATEGORY = "equipment_list_by_category";
+	public static final String ADMIN_REQUEST_PARAM_CATEGORY_ID = "category_id";
+	
+	/************** QUERY   ********************/
+	public static final String ADMIN_SQL_STATEMENT_LOG_ADD = "INSERT INTO equipment_web.log (user, action, sub_action, result_of_action, message) "
+			+ "VALUES (?, ?, ?, ?, ?);";
+	
+	public static final String ADMIN_SQL_STATEMENT_CATEGORY_LIST = "SELECT * FROM category";
+	
+	public static final String ADMIN_SQL_STATEMENT_EQUIPMENT_SELECT_LIST_BY_CATEGORY = "SELECT * FROM equipment WHERE category_id=?";
+	
+	
+	/****************************************************************************************************/
+	/*********************************** FRONT END   ****************************************************/
+	/****************************************************************************************************/
+	
 	public static final String ACTION_AUTHORISE = "login";
 	public static final String ACTION_MAKE_ORDER = "create_order";
 	public static final String ACTION_ORDER = "make_order";
 	
-	public static final String JSP_FOLDER_PATH = "/WEB-INF/jsp/";
-	public static final String PAGE_ADMIN_MAIN = JSP_FOLDER_PATH + "admin.jsp";
+	
 	public static final String PAGE_USER_MAIN = JSP_FOLDER_PATH + "forRent.jsp";
 	
 	public static final String PAGE_ORDER_ALL = JSP_FOLDER_PATH + "orders.jsp";
 	public static final String PAGE_ORDER_CREATE = JSP_FOLDER_PATH + "order.jsp";
-	
-	public static final String PAGE_ERROR = JSP_FOLDER_PATH + "error.jsp";
-	public static final String PAGE_DEFAULT = "index.html";
+
 	
 	public static final String REQUEST_PAREM_ACTION = "";
 	public static final String REQUEST_PARAM_AUTHORISE = "";
 	public static final String REQUEST_PARAM_LOGIN = "login";
 	public static final String REQUEST_PARAM_PASSWORD = "pass";
 	public static final String REQUEST_PARAM_LIST_EQ = "list_eq";
+	
+	public static final String REGUEST_PARAM_CATEGORY_LIST = "list_categories";
+	
 	public static final String REGUEST_PARAM_ERROR_MSG = "error_msg";
 	
 	public static String PARAM_USER_ID = "user_id";
@@ -49,4 +86,6 @@ public final class ConstantValue {
 	
 	public static final String SQL_STATEMENT_EQUIPMENT_SELECT_SPARE_EQUIPMENTS = "SELECT * FROM equipment WHERE is_rent=0";
 	public static final String SQL_STATEMENT_EQUIPMENT_SELECT_EQUIPMENTS_BY_IDS = "SELECT * FROM equipment WHERE id IN ";
+	
+
 }

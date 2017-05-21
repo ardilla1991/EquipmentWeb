@@ -4,7 +4,9 @@ $( document ).ready(function() {
 });
 
 function tabs() {
+	console.log("yyyyy");
 	$(".tab-title").click(function() {
+		console.log("jjjj");
 		console.log($(this));
 		$(".tab-title").toggleClass("active");
 		$(".tab-content").toggleClass("tab-active");

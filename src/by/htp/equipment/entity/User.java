@@ -7,9 +7,7 @@ public class User {
 	private String password;
 	private boolean role;
 	
-	private String firstName;
 	private String name;
-	private String secondName;
 	private String passport;
 	
 	public User() {
@@ -47,22 +45,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getSecondName() {
-		return secondName;
-	}
-
-	public void setSecondName(String secondName) {
-		this.secondName = secondName;
-	}
 
 	public String getPassport() {
 		return passport;
@@ -86,5 +68,12 @@ public class User {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", login=" + login + ", password=" + password + ", role=" + role
+				+ ", name=" + name + ", passport="
+				+ passport + "]";
 	}
 }

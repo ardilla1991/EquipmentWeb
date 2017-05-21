@@ -33,7 +33,6 @@ public class OrderDaoDb implements OrderDao{
 
 	@Override
 	public Long createOrder(Order  order) {
-		User user = null;
 		Long id = (long) 0;
 		
 		try {
