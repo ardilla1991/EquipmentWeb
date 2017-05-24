@@ -1,5 +1,8 @@
 package by.htp.equipment.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Equipment {
 	
 	private Long id;
@@ -11,6 +14,8 @@ public class Equipment {
 	private PersonCategoryEnum personCategory; // for child or for adult 
 	private boolean isRent;
 	private int categoryId;
+	
+	private List<Parameter> parameters = new ArrayList<Parameter>();
 	
 	public Equipment() {
 		
@@ -82,11 +87,13 @@ public class Equipment {
 		this.personCategory = personCategory;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Equipment [id=" + id + ", model=" + model + ", price=" + price + ", weight=" + weight + ", width="
 				+ width + ", height=" + height + ", personCategory=" + personCategory + ", isRent=" + isRent
-				+ ", categoryId=" + categoryId + "]";
+				+ ", categoryId=" + categoryId + ", parameters=" + parameters + "]";
 	}
 
 	public boolean getIsRent() {
@@ -103,6 +110,14 @@ public class Equipment {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public List<Parameter> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(List<Parameter> parameters) {
+		this.parameters = parameters;
 	}
 	
 }

@@ -1,8 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<a onclick="getContent('categoryContent',  'MainServlet?action=viewEditEquipmentPage&category_id=${category_id}')" href="#">Add equipment</a>
+
 <table class="table table-striped tab-content tab-active">
               <thead>
                 <tr>
-                  <th>Choose</th>
+                  <th>Action</th>
                   <th>#</th>
                   <th>Model</th>
                   <th>Price</th>
@@ -15,7 +18,7 @@
               <tbody>
                 <c:forEach items="${list_eq}" var="equip">
 					<tr> 
-					     <td> <input id="${equip.getId()}" class="eq_check" type="checkbox" name="choosedIds[]" value="${equip.getId()}"/></td>
+					     <td> <a href="MainServlet?action=viewEditEquipmentPage&category_id=${category_id}&id=${equip.getId()}">Edit</a></td>
 					     <td> <c:out value="${equip.getId()}"/> </td>
 					     <td> <c:out value="${equip.getModel()}" /> </td>
 					     <td id="price_${equip.getId()}"> <c:out value="${equip.getPrice()}" /> </td>

@@ -21,6 +21,9 @@ public class CommandChooser {
 			case ADMIN_ACTION_EQUIPMENT_LIST_BY_CATEGORY:
 				System.out.println("equipment_list_by_category");
 				return new EquipmentListByCategoryAction();
+			case ADMIN_ACTION_EQUIPMENT_VIEW_EDIT_PAGE:
+				System.out.println("equipment_edit_page");
+				return new EquipmentViewEditPageAction();
 			default:
 				break;
 		}

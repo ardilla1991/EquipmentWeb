@@ -23,11 +23,12 @@ public final class ConstantValue {
 	
 	/************   AJAX PAGE  ****************/
 	public static final String ADMIN_PAGE_EQUIPMENT_BY_CATEGORY = JSP_FOLDER_PATH_ADMIN + JSP_FOLDER_AJAX + "categories.jsp";
-	
+	public static final String ADMIN_PAGE_EQUIPMENT_EDIT_PAGE = JSP_FOLDER_PATH_ADMIN + JSP_FOLDER_AJAX + "equipmentEditPage.jsp";
 	
 	/************  ACTION  ****************/
 	public static final String ADMIN_ACTION_CATEGORY_LIST = "category_list";
 	public static final String ADMIN_ACTION_EQUIPMENT_LIST_BY_CATEGORY = "equipment_list_by_category";
+	public static final String ADMIN_ACTION_EQUIPMENT_VIEW_EDIT_PAGE = "viewEditEquipmentPage";
 	public static final String ADMIN_REQUEST_PARAM_CATEGORY_ID = "category_id";
 	
 	/************** QUERY   ********************/
@@ -37,7 +38,12 @@ public final class ConstantValue {
 	public static final String ADMIN_SQL_STATEMENT_CATEGORY_LIST = "SELECT * FROM category";
 	
 	public static final String ADMIN_SQL_STATEMENT_EQUIPMENT_SELECT_LIST_BY_CATEGORY = "SELECT * FROM equipment WHERE category_id=?";
+	public static final String ADMIN_SQL_STATEMENT_PARAMETERS_LIST_BY_CATEGORY = "SELECT * FROM parameters WHERE category_id=?";
 	
+	
+	/************  REGUEST PARAM   **************/
+	public static final String REQUEST_PARAM_EQUIPMENT = "equipment";
+	public static final String REQUEST_PARAM_PERSON_CATEGORIES = "person_categories";
 	
 	/****************************************************************************************************/
 	/*********************************** FRONT END   ****************************************************/
@@ -61,6 +67,7 @@ public final class ConstantValue {
 	public static final String REQUEST_PARAM_LIST_EQ = "list_eq";
 	
 	public static final String REGUEST_PARAM_CATEGORY_LIST = "list_categories";
+	public static final String REQUEST_PARAM_CATEGORY_ID = "category_id";
 	
 	public static final String REGUEST_PARAM_ERROR_MSG = "error_msg";
 	
