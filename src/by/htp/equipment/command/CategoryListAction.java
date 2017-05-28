@@ -24,8 +24,7 @@ public class CategoryListAction implements CommandAction{
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		List<Category> categories = service.list();
-		System.out.println(categories);
-		System.out.println("display!");
+
 		request.setAttribute(REGUEST_PARAM_CATEGORY_LIST, categories);
 		
 		return ADMIN_PAGE_CATEGORY_LIST;

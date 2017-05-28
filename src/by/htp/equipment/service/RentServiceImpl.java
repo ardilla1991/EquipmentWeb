@@ -2,7 +2,6 @@ package by.htp.equipment.service;
 
 import java.util.List;
 
-import by.htp.equipment.dao.OrderDao;
 import by.htp.equipment.dao.RentDao;
 import by.htp.equipment.dao.RentDaoImpl;
 import by.htp.equipment.entity.Equipment;

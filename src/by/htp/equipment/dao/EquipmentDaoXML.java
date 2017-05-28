@@ -10,7 +10,7 @@ import by.htp.equipment.builder.AbstractEquipmentsBuilder;
 import by.htp.equipment.builder.EquipmentBuilderFactory;
 import by.htp.equipment.entity.Equipment;
 
-public class EquipmentDaoXML implements EquipmentDao{
+public class EquipmentDaoXML /*implements EquipmentDao*/{
 	
 	private static List<Equipment> equipments = new ArrayList<Equipment>();
 	private static List<Equipment> spareEquipments = new ArrayList<Equipment>();
@@ -52,10 +52,11 @@ public class EquipmentDaoXML implements EquipmentDao{
 		return equipments;
 	}
 	
-	public void addEquipment(Equipment equipment) {
+	public int addEquipment(Equipment equipment) {
 		equipment.setId(generateIdOfEquipment());
-		equipments.add(equipment);
+		boolean res = equipments.add(equipment);
 		spareEquipments.add(equipment);
+		return equipments.size();
 	}
 	
 	private Long generateIdOfEquipment() {
@@ -83,13 +84,11 @@ public class EquipmentDaoXML implements EquipmentDao{
 		return "RentStation [equipments=" + equipments + "]";
 	}
 
-	@Override
 	public List<Equipment> getEquipmentsByIds(String[] ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Equipment> getListByCategory(int categoryId) {
 		// TODO Auto-generated method stub
 		return null;

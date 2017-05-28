@@ -11,6 +11,7 @@ public class Parameter {
 
 	private String title;
 	private String value;
+	private String description;
 	
 	
 	public Parameter() {
@@ -48,5 +49,13 @@ public class Parameter {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

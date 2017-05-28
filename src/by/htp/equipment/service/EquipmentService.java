@@ -12,9 +12,15 @@ public interface EquipmentService {
 	
 	List<Equipment> listOfSpareEquipments();
 	
-	public List<Equipment> findEquipmentByParams(double price);
+	List<Equipment> findEquipmentByParams(double price);
 	
-	public Equipment findSpareEquipmentByType(String type) throws ClassNotFoundException;
+	Equipment findSpareEquipmentByType(String type) throws ClassNotFoundException;
 	
-	public List<Equipment> prepareEquipmentForRent(String equipmentsStr);
+	List<Equipment> prepareEquipmentForRent(String equipmentsStr);
+	
+	long addEquipment(Equipment equipment);
+	
+	Equipment getEquipmentById(String equipmentIdS);
+	
+	long editEquipment(Equipment equipment);
 }

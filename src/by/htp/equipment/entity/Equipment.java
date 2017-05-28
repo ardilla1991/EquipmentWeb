@@ -13,7 +13,7 @@ public class Equipment {
 	private double height;
 	private PersonCategoryEnum personCategory; // for child or for adult 
 	private boolean isRent;
-	private int categoryId;
+	private Category category;
 	
 	private List<Parameter> parameters = new ArrayList<Parameter>();
 	
@@ -86,6 +86,18 @@ public class Equipment {
 	public void setPersonCategory(PersonCategoryEnum personCategory) {
 		this.personCategory = personCategory;
 	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setRent(boolean isRent) {
+		this.isRent = isRent;
+	}
 
 
 
@@ -93,7 +105,7 @@ public class Equipment {
 	public String toString() {
 		return "Equipment [id=" + id + ", model=" + model + ", price=" + price + ", weight=" + weight + ", width="
 				+ width + ", height=" + height + ", personCategory=" + personCategory + ", isRent=" + isRent
-				+ ", categoryId=" + categoryId + ", parameters=" + parameters + "]";
+				+ ", category=" + category + ", parameters=" + parameters + "]";
 	}
 
 	public boolean getIsRent() {
@@ -102,14 +114,6 @@ public class Equipment {
 
 	public void setIsRent(boolean isRent) {
 		this.isRent = isRent;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public List<Parameter> getParameters() {

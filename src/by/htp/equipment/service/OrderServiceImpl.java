@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-import by.htp.equipment.dao.EquipmentDao;
-import by.htp.equipment.dao.EquipmentDaoChooser;
 import by.htp.equipment.dao.OrderDao;
 import by.htp.equipment.dao.OrderDaoChooser;
-import by.htp.equipment.entity.Accessory;
 import by.htp.equipment.entity.Equipment;
-import by.htp.equipment.entity.MainEquipment;
 import by.htp.equipment.entity.Order;
 import by.htp.equipment.entity.User;
 
@@ -19,8 +15,6 @@ import static by.htp.equipment.util.ConstantValue.NUM_ALLOW_EQUIPMENT_FOR_RENT;
 public class OrderServiceImpl implements OrderService{
 
 	private OrderDao dao;
-	private EquipmentDao daoEq = EquipmentDaoChooser.chooseStorage();
-	
 	public OrderServiceImpl() {
 		dao = OrderDaoChooser.chooseStorage();
 	}
@@ -47,7 +41,7 @@ public class OrderServiceImpl implements OrderService{
 		ArrayList<Order> orders = dao.getEquipmentsOfPerson(user);
 	
 		
-		return 1;
+		return orders.size();
 	}
 	
 	public void resetEquipments() {
@@ -131,7 +125,6 @@ public class OrderServiceImpl implements OrderService{
 		Long id = dao.createOrder(order);
 		order.setOrderId(id);
 
-		// STUB!
 		return order;
 	}
 	

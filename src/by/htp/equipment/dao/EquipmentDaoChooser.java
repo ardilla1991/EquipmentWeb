@@ -7,7 +7,7 @@ public class EquipmentDaoChooser {
 		switch (EQUIPMETN_STORAGE) {
 			case "xml":
 				System.out.println("xml storage");
-				return new EquipmentDaoXML();
+				//return new EquipmentDaoXML();
 			case "db":
 				System.out.println("db storage");
 				return new EquipmentDaoDb();

@@ -17,17 +17,14 @@ public class CategoryDaoImpl implements CategoryDao{
 
 	@Override
 	public List<Category> list() {
-		System.out.println("get!");
 		List<Category> categories = new ArrayList<Category>();
 		
 		try {
 			Connection dbConnector = Loader.LoaderDb();
 			Statement st = dbConnector.createStatement();
 			ResultSet rs = st.executeQuery(ADMIN_SQL_STATEMENT_CATEGORY_LIST);
-			
-			System.out.println("oook");
+
 			while ( rs.next() ) {
-				System.out.println("next");
 				int id = rs.getInt(1);
 				String title = rs.getString(2);
 				CategoryTypeEnum type = CategoryTypeEnum.valueOf(rs.getString(3));
@@ -40,12 +37,11 @@ public class CategoryDaoImpl implements CategoryDao{
 				categories.add(category);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println(categories);
+
 		return categories;
 	}
 

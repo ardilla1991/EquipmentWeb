@@ -35,3 +35,27 @@ function getContent(res_id, url) {
 	}
 	xhr.send(null);
 }
+
+function elementAdd(form_id, url, res_id){
+
+	if (!document.getElementById(res_id)) return;
+	
+	    var msg   = $('#'+form_id).serialize();
+
+	    var xhr = new XMLHttpRequest();
+	    var end_url = '',
+	        postRequestString = 'xhr=html&' + (msg=="" ? "": "&"+msg)+'&r=' + Math.random();
+
+	    url += url.indexOf('?')==-1 ? "?"+end_url : "&"+end_url;
+
+	    xhr.open("POST",url,true);
+	    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState != 4) return;
+
+	        document.getElementById(res_id).innerHTML = xhr.responseText;
+	    }
+
+	    xhr.send(postRequestString);
+
+	}

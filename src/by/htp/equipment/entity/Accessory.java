@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class Accessory extends Equipment{
+public abstract class Accessory /*extends Equipment*/{
 
 	private static final HashMap<Integer, String> CATEGORIES = new HashMap<Integer, String>(2);
 	private ArrayList<Integer> category = new ArrayList<Integer>();
@@ -21,7 +21,7 @@ public abstract class Accessory extends Equipment{
 	
 	public Accessory(ArrayList<Integer> category, String model, double price, double weight, 
 			double width, double height, PersonCategoryEnum personCategory) {
-		super(model, price, weight, width, height, personCategory);
+		//super(model, price, weight, width, height, personCategory);
 		this.category = category;
 	}
 

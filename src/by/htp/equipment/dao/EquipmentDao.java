@@ -10,22 +10,25 @@ public interface EquipmentDao {
 
 	List<Equipment> getListByCategory(int categoryId);
 	
-	public List<Equipment> getEngagedEquipments();
+	List<Equipment> getEngagedEquipments();
 	
-	public List<Equipment> getEquipments();
+	List<Equipment> getEquipments();
 
-	public List<Equipment> list();
+	List<Equipment> list();
 	
-	public void addEquipment(Equipment equipment);
+	long addEquipment(Equipment equipment);
 
-	public void addEngagedEquipment(Equipment eq);
+	void addEngagedEquipment(Equipment eq);
 	
-	public void addSpareEquipment(Equipment eq);	
+	void addSpareEquipment(Equipment eq);	
 	
-	public void deleteSpareEquipment(Equipment eq);
+	void deleteSpareEquipment(Equipment eq);
 	
-	public void deleteEngagedEquipment(Equipment eq);
+	void deleteEngagedEquipment(Equipment eq);
 	
-	public List<Equipment> getEquipmentsByIds(String[] ids);
-
+	List<Equipment> getEquipmentsByIds(String[] ids);
+	
+	Equipment getEquipmentById(long id);
+	
+	long editEquipment(Equipment equipment);
 }

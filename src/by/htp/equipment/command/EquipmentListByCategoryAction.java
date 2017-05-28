@@ -22,14 +22,15 @@ public class EquipmentListByCategoryAction implements CommandAction{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		System.out.println("list by category");
 		String categoryIdS = request.getParameter(ADMIN_REQUEST_PARAM_CATEGORY_ID);
 		List<Equipment> equipment = equipService.getListByCategory(categoryIdS);
-		System.out.println(equipment);
+
 		request.setAttribute(REQUEST_PARAM_CATEGORY_ID, categoryIdS);
 		request.setAttribute(REQUEST_PARAM_LIST_EQ, equipment);
 		
 		String page = ADMIN_PAGE_EQUIPMENT_BY_CATEGORY;
+		
+		//response.setCharacterEncoding("UTF-8");
 		
 		return page;
 	}

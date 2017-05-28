@@ -3,7 +3,6 @@ package by.htp.equipment.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import by.htp.equipment.entity.Bycicle;
 import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.entity.Order;
 import by.htp.equipment.entity.User;
@@ -16,7 +15,6 @@ import static by.htp.equipment.util.ConstantValue.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 public class OrderCreateAction implements CommandAction{
@@ -38,8 +36,6 @@ public class OrderCreateAction implements CommandAction{
 		 
 		String userId = request.getParameter(PARAM_USER_ID);
 		String[] equipmentIds = request.getParameterValues(PARAM_CHOOSED_EQUIPMENTS_IDS);
-		//System.out.println("eq=");
-		//System.out.println(equipmentIds);
 		String dateStart = request.getParameter(PARAM_DATE_START);
 		String dateEnd = request.getParameter(PARAM_DATE_END);
 		
@@ -52,8 +48,7 @@ public class OrderCreateAction implements CommandAction{
 			eq.setId(Long.valueOf(equipmentIds[i]));
 			equipmentList.add(eq);
 		}
-		
-		//System.out.println(dateStart);
+
 		Date start = Date.valueOf(dateStart);
 		Date end = Date.valueOf(dateEnd);
 		
@@ -62,7 +57,6 @@ public class OrderCreateAction implements CommandAction{
 		
 		List<Order> orders = service.getOrderListByUser(user);
 		request.setAttribute(REQUEST_PARAM_LIST_EQ, orders);
-		System.out.println(orders);
 		
 		return page;
 	}

@@ -4,21 +4,15 @@ import static by.htp.equipment.util.ConstantValue.*;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import by.htp.equipment.controller.Loader;
-import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.entity.Order;
-import by.htp.equipment.entity.Person;
-import by.htp.equipment.entity.PersonCategoryEnum;
 import by.htp.equipment.entity.User;
 
 public class OrderDaoDb implements OrderDao{
@@ -37,7 +31,6 @@ public class OrderDaoDb implements OrderDao{
 		
 		try {
 			Connection dbConnector = Loader.LoaderDb();
-			System.out.println("eeeeeeeeeeeeeeee");
 			//Statement st = conn.createStatement();
 			//ResultSet rs = st.executeQuery(SQL_STATEMENT_SELECT_USERs);
 			PreparedStatement ps = dbConnector.prepareStatement(SQL_STATEMENT_ORDER_CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -54,7 +47,6 @@ public class OrderDaoDb implements OrderDao{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -65,13 +57,11 @@ public class OrderDaoDb implements OrderDao{
 
 	@Override
 	public List<Order> fetchAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Order> getOrdersByUser(User user) {
-		System.out.println("get!");
 		List<Order> orders = new ArrayList<Order>();
 		
 		try {
@@ -80,9 +70,7 @@ public class OrderDaoDb implements OrderDao{
 			ps.setLong(1, user.getUserId());
 			ResultSet rs = ps.executeQuery();
 			
-			System.out.println("oook");
 			while ( rs.next() ) {
-				System.out.println("next");
 				Long id = rs.getLong(1);
 				//Long id_user = rs.getLong(2);
 				System.out.println(rs.getDate(3));
@@ -102,8 +90,7 @@ public class OrderDaoDb implements OrderDao{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println(orders);
-		
+
 		return orders;
 	}
 

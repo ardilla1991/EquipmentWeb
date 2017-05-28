@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import static by.htp.equipment.util.ConstantValue.*;
 
 import by.htp.equipment.controller.Loader;
@@ -50,11 +49,8 @@ public class UserDaoImpl implements UserDao{
 				//user.setPassport(passport);
 				user.setRole(role);
 			}
-			
-			System.out.println("user!!!");
-			System.out.println(user);
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

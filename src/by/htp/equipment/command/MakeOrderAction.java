@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import by.htp.equipment.entity.Equipment;
 import by.htp.equipment.service.EquipmentService;
 import by.htp.equipment.service.EquipmentServiceImpl;
-import by.htp.equipment.service.OrderService;
-import by.htp.equipment.service.OrderServiceImpl;
 
 import static by.htp.equipment.util.ConstantValue.*;
 
@@ -26,8 +24,7 @@ public class MakeOrderAction implements CommandAction{
 		
 		String equipmentsStr = request.getParameter("equipments_ids");
 		List<Equipment> equipments = service.prepareEquipmentForRent(equipmentsStr);
-		System.out.println(equipments);
-		System.out.println("display!");
+
 		request.setAttribute(REQUEST_PARAM_LIST_EQ, equipments);
 		
 		return PAGE_ORDER_CREATE;

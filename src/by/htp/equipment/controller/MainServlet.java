@@ -23,12 +23,10 @@ public class MainServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("do get");
 		processRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("do post");
 		//UserDao dao = new UserDaoImpl();
 		//dao.fetchByCredentials("", "");
 		processRequest(request, response);
@@ -36,15 +34,10 @@ public class MainServlet extends HttpServlet {
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		System.out.println("action=");
-		System.out.println(action);
-		System.out.println("after action");
 		String page = null;
 		if ( action != null ) {
 			CommandAction currAction = CommandChooser.chooseAction(action);
-			System.out.println(currAction);
 			page = currAction.execute(request, response);
-			System.out.println(page);
 			
 			RequestDispatcher disp = request.getRequestDispatcher(page);
 			disp.forward(request, response);

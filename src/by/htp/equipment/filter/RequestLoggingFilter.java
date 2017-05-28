@@ -27,7 +27,6 @@ public class RequestLoggingFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("FILTER!!!!!!!!!!!!!!!!!");
 		HttpServletRequest req = (HttpServletRequest) request;
 		Enumeration<String> params = req.getParameterNames();
 		while(params.hasMoreElements()) {
@@ -37,7 +36,6 @@ public class RequestLoggingFilter implements Filter{
 		
 		try {
 			Connection dbConnector = Loader.LoaderDb();
-			System.out.println("eeeeeeeeeeeeeeee");
 			//Statement st = conn.createStatement();
 			//ResultSet rs = st.executeQuery(SQL_STATEMENT_SELECT_USERs);
 			PreparedStatement ps = dbConnector.prepareStatement(ADMIN_SQL_STATEMENT_LOG_ADD);
@@ -50,7 +48,6 @@ public class RequestLoggingFilter implements Filter{
 						
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

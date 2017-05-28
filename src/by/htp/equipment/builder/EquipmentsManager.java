@@ -13,8 +13,8 @@ public class EquipmentsManager {
 				return new Bycicle();
 			case "skate":
 				return new Skate();
-			case "helmet":
-				return new Helmet();
+			//case "helmet":
+				//return new Helmet();
 		}
 		
 		return null;
@@ -27,10 +27,10 @@ public class EquipmentsManager {
 		} else if ( equipment instanceof Skate ) {
 			Skate skate = (Skate) equipment;
 			SkateBuilder.setProperties(skate, text, s);
-		} else if ( equipment instanceof Helmet ) {
+		} /*else if ( equipment instanceof Helmet ) {
 			Helmet helmet = (Helmet) equipment;
 			HelmetBuilder.setProperties(helmet, text, s);
-		}
+		}*/
 		
 		return equipment;
 	}
